@@ -1,0 +1,15 @@
+html{
+background-image: url("https://www.nasa.gov/sites/default/files/thumbnails/image/main_image_star-forming_region_carina_nircam_final-5mb.jpg");
+background-repeat: no-repeat;
+background-size: cover;
+}
+
+#page-wrapper
+{
+  width: 640px;
+  background: white;
+  padding: 1em;
+  margin: 1em auto;
+  border-top: 5px solid #D16002;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.8)
+}
