@@ -102,8 +102,8 @@ function submitButtonsReady(){
 document.addEventListener('DOMContentLoaded', astroParseReady);
 function astroParseReady(){
  document.getElementById('astroParse').addEventListener('click', function(event){
-   fetch('http://api.open-notify.org/astros.json')
-   .then((response) => response.json())
-   .then((dat) => console.log(data));
+  $.getJSON('http://api.open-notify.org/astros.json', function(data) {
+    console.log(data['number'])
  });
+})
 }
