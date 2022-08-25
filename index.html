@@ -5,46 +5,140 @@
   <meta name="description" content="Small website tracking various Space API's" />
   <meta name="author" content="James Barlow" />
   <title>Space APIs</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
   <link rel="stylesheet" href="styles/style.css" />
 </head>
 <body>
   <body>
-    <header>
-
-    </header>
     <main>
-      <div id ="page-wrapper">
-        <h1> Space API's</h1>
-
-        <section>
-          <h2>Fullscreen Site</h2>
-          <button id = "fs-doc-button">Go Fullscreen</button>
-          <button id = "fs-exit-button">Exit Fullscreen</button>
-        </section>
-
+      <div id = "pageWrapper">
+        <aside>
+          <h1>Space API's</h1>
+          <button id = "fsDocButton" class="btn btn-dark">Go Fullscreen</button>
+          <button id = "fsExitButton" class="btn btn-secondary">Exit Fullscreen </button>
+        </aside>
         <hr />
+      
         <div class = "javaScriptApiContainer">
-          <div class = "javaScriptApis" id = "box1">
-            <h2>API 1</h2>
-            <button id ="fs-button-1">Go Fullscreen</button>
-          </div>
-
-          <div class = "javaScriptApis" id = "box2">
-            <h2>API 2</h2>
-            <button id = "fs-button-2">Go Fullscreen</button>
-          </div>
-
-          <div class = "javaScriptApis" id = "box3">
-            <h2>API 3</h2>
-            <button id = "fs-button-3">Go Fullscreen</button>
-          </div>
-
-          <div class = "javaScriptApis" id = "box4">
-            <h2>API 4</h2>
-            <button id = "fs-button-4">Go Fullscreen</button>
-          </div>
+          <div id="carouselExampleControls" class="carousel slide" data-ride="false">
+            <div class="containerFluid text-center">
+              <div class="row">
+                <div class =  "col-xs-6">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <h2>NASA Astronomy Picture Of The Day</h2>
+                      <h3 id="title"></h3>
+                      <h4>Date: <span id="date"></span></h4>
+                      <center><img id="pic" src="" alt="NASA Picture Of The Day" width= "100%"/></center>
+                      <p id="explanation"></p>         
+                    </div>
+      
+                    <div class="carousel-item" >
+                      <h2>Mars Rover API</h2>
+                      <!-- Create a form that allows the user to choose a rover and date for the API to search for an image -->
+                      <form>
+                        <fieldset>
+                          <legend>Date Input (YYYY-MM-DD)</legend>
+                          <label for="dateValue"></label>
+                          <input type ="text" name="dateValue" id="dateValue"/> <br/>
+                          <input type="submit" id="dateInput" class ="btn btn-dark" />              
+                        </fieldset>
+                      </form>
+                        <!-- Tip Section, letting users know what dates curiosity landed for searching purposes -->                 
+                        <h3>Tips:</h3> <em>Curiosity did not start taking photos until several days after landing.</em> <br />
+                        <ul>
+                          <li> Curiosity landed on: 2012-08-06 </li>
+                        </ul>     
+                        <!-- Image results using the JSON Information provided by the API -->
+                        <h4>Image Results:</h4>
+                        <span> Image Retrieval Status: </span><span id = "imageStatus"></span>
+                        <br/>
+                        <span>Rover Name: </span><span id ="roverCaption"></span>
+                        <br/>
+                        <span>Landing Date: </span><span id ="landingDate"></span>
+                        <br/>
+                        <span>Expected End Date:</span><span id = "endingDate"></span>
+                        <br/>
+                        <h4> Image: </h4>
+                        <img id = "imageID" src = "" alt ="" width = "55%"/>         
+                    </div>
+      
+                    <div class="carousel-item">
+                      <h2> Who's In Space?</h2>
+                      <hr/>
+                      <div id="spacePop">
+                        <details>
+                          <summary>Photo Credits </summary>
+                          <p id="numPeople">People in Space: </p>
+                          <p id="astroNames">Names Of Astronauts: </p>
+                          <input type="submit" id="astroParse" class ="btn btn-dark" />
+                        </details>
+                      </div>
+                    </div>
+                    <div class="carousel-item">
+                      <h2>Mars Weather Service</h2>
+                      <hr/>
+                      <div class ="containerFluid text-center" id="outerDiv">
+                        <div class = "row" id="innerDiv">
+                          <div class = "col-lg-2 col-md-4 col-sm-6" id="day1">
+                            <p id="earthDate">Sol: 267</p>
+                            <p id="avgTemp"> Avg: 78 </p>
+                            <p id="maxTemp"> High: 85F</p>
+                            <p id="minTemp"> Low: 65F</p>
+                          </div>
+                          <div class = "col-lg-2 col-md-4 col-sm-6" id="day2">
+                            <p id="earthDate">Sol: 267</p>
+                            <p id="avgTemp"> Avg: 85F</p>
+                            <p id="maxTemp"> High: 85F</p>
+                            <p id="minTemp"> Low: 65F</p>
+                          </div>
+                          <div class = "col-lg-2 col-md-4 col-sm-6" id="day3">
+                            <p id="earthDate">Sol: 267</p>
+                            <p id="avgTemp"> Avg: 85F</p>
+                            <p id="maxTemp"> High: 85F</p>
+                            <p id="minTemp"> Low: 65F</p>
+                          </div>
+                          <div class = "col-lg-2 col-md-4 col-sm-6" id="day4">
+                            <p id="earthDate">Sol: 267</p>
+                            <p id="avgTemp"> Avg: 85F</p>                    
+                            <p id="maxTemp"> High: 85F</p>
+                            <p id="minTemp"> Low: 65F</p>
+                          </div>
+                          <div class = "col-lg-2 col-md-4 col-sm-6" id="day5">
+                            <p id="earthDate">Sol: 267</p>
+                            <p id="avgTemp"> Avg: 85F</p>                    
+                            <p id="maxTemp"> High: 85F</p>
+                            <p id="minTemp"> Low: 65F</p>
+                          </div>     
+                          <div class = "col-lg-2 col-md-4 col-sm-6" id="day6">
+                            <p id="earthDate">Sol: 267</p>
+                            <p id="avgTemp"> Avg: 85F</p>                    
+                            <p id="maxTemp"> High: 85F</p>
+                            <p id="minTemp"> Low: 65F</p>
+                          </div>
+                     
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>        
+            </div>      
+          </div>  
+                      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
         </div>
       </div>
+      
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>          
+      <script src="scripts/index.js"></script>
     </main>
   </body>
 </html>
