@@ -98,3 +98,12 @@ function submitButtonsReady(){
     event.preventDefault();
   });
 }
+
+document.addEventListener('DOMContentLoaded', astroParseReady);
+function astroParseReady(){
+ document.getElementById('astroParse').addEventListener('click', function(event){
+   fetch('api.open-notify.org/astros.json')
+   .then((response) => response.json())
+   .then((dat) => console.log(data));
+ });
+}
