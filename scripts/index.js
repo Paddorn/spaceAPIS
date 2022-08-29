@@ -90,7 +90,7 @@ function submitButtonsReady(){
         document.getElementById('endingDate').textContent = response.photos[0].rover.max_date;
       } else 
       { 
-        console.log("Error in network request: " + request.statusText);
+        console.log("Error in network request: "+request.statusText);
       }});
     //Prompts user to check syntax until proper response comes through.
     document.getElementById('imageStatus').textContent = 'Please try a different date or check your syntax!';
@@ -102,8 +102,11 @@ function submitButtonsReady(){
 document.addEventListener('DOMContentLoaded', astroParseReady);
 function astroParseReady(){
  document.getElementById('astroParse').addEventListener('click', function(event){
-  $.getJSON('http://api.open-notify.org/astros.json', function(data) {
-    console.log(data['number'])
- });
-})
-}
+  $.getJSON('http://api.open-notify.org/astros.json', function(data) {   
+    document.getElementById('numPeople').innerHTML="Number of Astronauts in Space: " + data.number;
+    const nameList=data.people.map(person => person.name + " - " + person.craft);
+    console.log(nameList.join("\n"))
+      })
+     })
+    };
+
