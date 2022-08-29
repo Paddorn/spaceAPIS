@@ -18,6 +18,11 @@ ul
 	list-style: none
 }
 
+.pic
+{
+  margin: 0 auto;
+}
+
 #pageWrapper
 {
   background-color: #FFFFFF;
